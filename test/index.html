@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			textarea {
+				width: 100%;
+				height: 600px;
+				display: block;
+				white-space: pre-wrap;
+			}
+		</style>
+	</head>
+	<body>
+		<textarea id="copyObj"></textarea>
+		<button onclick="CopyUrl()">点击复制按钮</button>
+		<script>
+			const n = 6
+			let data = document.querySelector('#copyObj');
+			data.innerText =
+				`
+			/* 抖动幅度${n}px */
+			@-webkit-keyframes shakeY${n} {
+			
+				0%,
+				to {
+					-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+				}
+			
+				10%,
+				30%,
+				50%,
+				70%,
+				90% {
+					-webkit-transform: translate3d(0, ${n}px, 0);
+					transform: translate3d(0, ${n}px, 0);
+				}
+			
+				20%,
+				40%,
+				60%,
+				80% {
+					-webkit-transform: translate3d(0, -${n}px, 0);
+					transform: translate3d(0, -${n}px, 0);
+				}
+			}
+			
+			@keyframes shakeY${n} {
+			
+				0%,
+				to {
+					-webkit-transform: translateZ(0);
+					transform: translateZ(0);
+				}
+			
+				10%,
+				30%,
+				50%,
+				70%,
+				90% {
+					-webkit-transform: translate3d(0, ${n}px, 0);
+					transform: translate3d(0, ${n}px, 0);
+				}
+			
+				20%,
+				40%,
+				60%,
+				80% {
+					-webkit-transform: translate3d(0, -${n}px, 0);
+					transform: translate3d(0, -${n}px, 0);
+				}
+			}
+			
+			.shakeY${n} {
+				-webkit-animation-name: shakeY${n};
+				animation-name: shakeY${n};
+			}`;
+
+			function CopyUrl() {
+				let url = document.querySelector('#copyObj');
+				url.select(); // 选择对象
+				document.execCommand("Copy");
+			}
+		</script>
+	</body>
+</html>
